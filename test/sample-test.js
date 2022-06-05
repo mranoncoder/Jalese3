@@ -17,12 +17,12 @@ describe("Jalese 3", function () {
   it("esme user hast Abolfazl!", async function () {
     const options = {value: ethers.utils.parseEther("2.0")};
     await Jalese3.taghirEsm("Abolfazl", 19, options);
-    console.log("Balance of Owner: ", await owner.getBalance());
+    console.log("Balance of Owner: ", ethers.BigNumber.from(await owner.getBalance()).toString());
     const jaleseAddress = Jalese3.address;
 
-    console.log("Balance: ", await ethers.provider.getBalance(jaleseAddress));
+    console.log("Balance: ", ethers.BigNumber.from(await ethers.provider.getBalance(jaleseAddress)).toString());
     await Jalese3.withdraw();
-    console.log("Balance: ", await owner.getBalance());
+    console.log("Balance: ", ethers.BigNumber.from(await owner.getBalance()).toString());
     expect(await Jalese3.getEsm()).to.equal("Abolfazl");
 
 
